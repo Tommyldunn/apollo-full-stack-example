@@ -1,5 +1,5 @@
 {
-  "name": "githunt-api",
+  "name": "repo-voter-api",
   "version": "1.0.0",
   "description": "Example app for Apollo",
   "scripts": {
@@ -13,16 +13,8 @@
     "test:setup": "rm test.sqlite3 || true; knex migrate:latest --env test && knex seed:run --env test"
   },
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/apollostack/GitHunt.git"
-  },
   "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/apollostack/GitHunt/issues"
-  },
-  "homepage": "https://github.com/apollostack/GitHunt#readme",
   "devDependencies": {
     "babel-eslint": "7.2.1",
     "babel-jest": "^20.0.0",

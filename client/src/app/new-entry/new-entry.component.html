@@ -1,5 +1,5 @@
 <div>
-  <h1>Submit a repository</h1>
+  <h1>Submit a repo</h1>
 
   <form (ngSubmit)="submitForm()">
     <div class="form-group">
@@ -11,19 +11,15 @@
         type="text"
         class="form-control"
         id="repositoryInput"
-        placeholder="apollostack/GitHunt"
+        placeholder="Tommyldunn/atom-ng2-generator-buddy"
         [(ngModel)]="repoFullName"
         name="repoFullName"
         required
       />
     </div>
 
-    <div *ngIf="error" class="alert alert-danger" role="alert">
-      {{ error }}
-    </div>
+    <div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
 
-    <button type="submit" class="btn btn-primary">
-      Submit
-    </button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
-import {Router} from '@angular/router';
-import {Apollo} from 'apollo-angular';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Apollo } from 'apollo-angular';
 
 import 'rxjs/add/operator/toPromise';
 
-import {submitRepositoryMutation} from './new-entry.model';
+import { submitRepositoryMutation } from './new-entry.model';
 
 @Component({
   selector: 'app-new-entry',
@@ -15,7 +15,7 @@ export class NewEntryComponent {
   public repoFullName: string;
 
   constructor(private router: Router,
-              private apollo: Apollo) {
+    private apollo: Apollo) {
   }
 
   public submitForm(): void {

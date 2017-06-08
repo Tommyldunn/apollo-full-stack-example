@@ -1,13 +1,13 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Apollo, ApolloQueryObservable} from 'apollo-angular';
-import {Subscription} from 'rxjs/Subscription';
-import {Subject} from 'rxjs/Subject';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Apollo, ApolloQueryObservable } from 'apollo-angular';
+import { Subscription } from 'rxjs/Subscription';
+import { Subject } from 'rxjs/Subject';
 
 import 'rxjs/add/operator/toPromise';
 
-import {commentQuery, submitCommentMutation, subscriptionQuery} from './comments-page.model';
-import {Comment} from '../../schema-types';
+import { commentQuery, submitCommentMutation, subscriptionQuery } from './comments-page.model';
+import { Comment } from '../../schema-types';
 
 // helper function checks for duplicate comments, which we receive because we
 // get subscription updates for our own comments as well.
@@ -40,7 +40,7 @@ export class CommentsPageComponent implements OnInit, OnDestroy {
   private offset = 0;
 
   constructor(private route: ActivatedRoute,
-              private apollo: Apollo) {
+    private apollo: Apollo) {
     this.noCommentContent = false;
   }
 
@@ -56,7 +56,7 @@ export class CommentsPageComponent implements OnInit, OnDestroy {
     });
 
     // Subscribe
-    this.entrySub = this.entryObs.subscribe(({data, loading}) => {
+    this.entrySub = this.entryObs.subscribe(({ data, loading }) => {
       this.entry = data.entry;
       this.currentUser = data.currentUser;
       this.loading = loading;
@@ -89,9 +89,9 @@ export class CommentsPageComponent implements OnInit, OnDestroy {
           limit: COMMENTS_PER_QUERY,
           offset: this.offset
         },
-        updateQuery: (prev, {fetchMoreResult}) => {
+        updateQuery: (prev, { fetchMoreResult }) => {
           // push the new data
-          const data: Object = pushComments<Object>(prev, {fetchMoreResult});
+          const data: Object = pushComments<Object>(prev, { fetchMoreResult });
           // change the status
           this.loadingMoreComments = false;
 
@@ -119,7 +119,7 @@ export class CommentsPageComponent implements OnInit, OnDestroy {
         optimisticResponse: optimisticComment(this.currentUser, this.newComment),
         // Update the query result
         updateQueries: {
-          Comment: (prev, {mutationResult}: any) => {
+          Comment: (prev, { mutationResult }: any) => {
             const newComment: Comment = mutationResult.data.submitComment;
             const data: Object = pushNewComment<Object>(prev, newComment);
             this.offset++;
@@ -144,7 +144,7 @@ export class CommentsPageComponent implements OnInit, OnDestroy {
 
     this.subscriptionSub = this.apollo.subscribe({
       query: subscriptionQuery,
-      variables: {repoFullName: repoName},
+      variables: { repoFullName: repoName },
     }).subscribe({
       next: (data) => {
         const newComment: Comment = data.commentAdded;
@@ -175,7 +175,7 @@ function optimisticComment(postedBy: any, content: Comment): Object {
   };
 }
 
-function pushComments<T>(prev: any, {fetchMoreResult}: any): T {
+function pushComments<T>(prev: any, { fetchMoreResult }: any): T {
   const newComments: Comment[] = fetchMoreResult.entry.comments;
   const commentCount: number = fetchMoreResult.entry.commentCount;
 

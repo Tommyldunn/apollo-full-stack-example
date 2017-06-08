@@ -1,13 +1,13 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Apollo, ApolloQueryObservable} from 'apollo-angular';
-import {Subscription} from 'rxjs/Subscription';
-import {Subject} from 'rxjs/Subject';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Apollo, ApolloQueryObservable } from 'apollo-angular';
+import { Subscription } from 'rxjs/Subscription';
+import { Subject } from 'rxjs/Subject';
 
 import 'rxjs/add/operator/toPromise';
 
-import {OnVoteEvent} from './feed-entry.component';
-import {feedQuery, voteMutation} from './feed.model';
+import { OnVoteEvent } from './feed-entry.component';
+import { feedQuery, voteMutation } from './feed.model';
 
 @Component({
   selector: 'app-feed',
@@ -28,7 +28,7 @@ export class FeedComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private apollo: Apollo
-  ) {}
+  ) { }
 
   public ngOnInit(): void {
     // Fetch
@@ -43,7 +43,7 @@ export class FeedComponent implements OnInit, OnDestroy {
     });
 
     // Subscribe
-    this.feedSub = this.feedObs.subscribe(({data, loading}) => {
+    this.feedSub = this.feedObs.subscribe(({ data, loading }) => {
       this.feed = data.feed;
       this.currentUser = data.currentUser;
       this.loading = loading;
@@ -71,7 +71,7 @@ export class FeedComponent implements OnInit, OnDestroy {
       variables: {
         offset: this.offset + this.itemsPerPage
       },
-      updateQuery: (prev, {fetchMoreResult}) => pushEntries(prev, fetchMoreResult)
+      updateQuery: (prev, { fetchMoreResult }) => pushEntries(prev, fetchMoreResult)
     })
       .then(() => {
         this.offset += this.itemsPerPage;
@@ -92,4 +92,3 @@ function pushEntries<T>(prev: any, data: any): T {
     feed: [...prev.feed, ...data.feed],
   });
 }
-

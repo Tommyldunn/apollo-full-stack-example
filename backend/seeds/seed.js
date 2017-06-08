@@ -23,10 +23,6 @@ const repos = [
     posted_by: 'stubailo',
   },
   {
-    repository_name: 'apollographql/graphql-server',
-    posted_by: 'helfer',
-  },
-  {
     repository_name: 'meteor/meteor',
     posted_by: 'tmeasday',
   },
@@ -80,14 +76,13 @@ const repoIds = {};
 
 const votes = {
   [repos[0].repository_name]: {
-    stubailo: 1,
-    helfer: 1,
+    // stubailo: 1
   },
   [repos[1].repository_name]: {
-    helfer: 1,
+    // helfer: 1,
   },
   [repos[2].repository_name]: {
-
+    helfer: 1,
   },
 };
 
