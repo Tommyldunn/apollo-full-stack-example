@@ -1,13 +1,6 @@
-# GitHunt Angular2
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/apollographql/GitHunt-Angular.svg)](https://greenkeeper.io/)
+# Repo Voter Angular2
 
 An example of a client-side app built with Angular2 and Apollo Client.
-
-[![Get on Slack](https://img.shields.io/badge/slack-join-orange.svg)](http://www.apollostack.com/#slack)
-[![Build Status](https://travis-ci.org/apollostack/GitHunt-angular2.svg?branch=master)](https://travis-ci.org/apollostack/GitHunt-angular2)
-
-Please submit a pull request if you see anything that can be improved!
 
 ## Running the app
 
